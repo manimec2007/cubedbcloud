@@ -382,6 +382,9 @@ cubes:
       - name: count
         type: count
 
+      - name: Droff
+        type: count
+
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
