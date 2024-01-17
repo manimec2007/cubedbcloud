@@ -382,7 +382,7 @@ cubes:
       - name: count
         type: count
 
-      - name: Droff
+      - name: Dropff
         type: count
 
     pre_aggregations:
