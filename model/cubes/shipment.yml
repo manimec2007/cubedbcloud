@@ -383,7 +383,8 @@ cubes:
         type: count
 
       - name: Dropff
-        type: count
+        type: countDistinct
+        
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
