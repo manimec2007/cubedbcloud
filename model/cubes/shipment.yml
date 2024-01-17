@@ -1,0 +1,388 @@
+cubes:
+  - name: shipment
+    sql_table: pharmsight_csl.shipment
+
+    joins: []
+
+    dimensions:
+      - name: ship_date
+        sql: SHIP_DATE
+        type: time
+        primary_key: true
+
+      - name: referral_source
+        sql: REFERRAL_SOURCE
+        type: string
+
+      - name: full_product_name
+        sql: FULL_PRODUCT_NAME
+        type: string
+
+      - name: product_strength
+        sql: PRODUCT_STRENGTH
+        type: string
+
+      - name: product_form
+        sql: PRODUCT_FORM
+        type: string
+
+      - name: ndc_number
+        sql: NDC_NUMBER
+        type: string
+
+      - name: quantity_shipped
+        sql: QUANTITY_SHIPPED
+        type: string
+
+      - name: quantity_uom
+        sql: QUANTITY_UOM
+        type: string
+
+      - name: days_supplied
+        sql: DAYS_SUPPLIED
+        type: string
+
+      - name: frequency
+        sql: FREQUENCY
+        type: string
+
+      - name: authorized_refills
+        sql: AUTHORIZED_REFILLS
+        type: string
+
+      - name: fill_number
+        sql: FILL_NUMBER
+        type: string
+
+      - name: secondary_icd_codes
+        sql: SECONDARY_ICD_CODES
+        type: string
+
+      - name: tertiary_icd_codes
+        sql: TERTIARY_ICD_CODES
+        type: string
+
+      - name: ship_to_location_type
+        sql: SHIP_TO_LOCATION_TYPE
+        type: string
+
+      - name: shipping_carrier
+        sql: SHIPPING_CARRIER
+        type: string
+
+      - name: physician_city
+        sql: PHYSICIAN_CITY
+        type: string
+
+      - name: physician_state
+        sql: PHYSICIAN_STATE
+        type: string
+
+      - name: primary_payer_bin
+        sql: PRIMARY_PAYER_BIN
+        type: string
+
+      - name: primary_group_number
+        sql: PRIMARY_GROUP_NUMBER
+        type: string
+
+      - name: primary_payer_name
+        sql: PRIMARY_PAYER_NAME
+        type: string
+
+      - name: primary_payer_type
+        sql: PRIMARY_PAYER_TYPE
+        type: string
+
+      - name: primary_benefit_type
+        sql: PRIMARY_BENEFIT_TYPE
+        type: string
+
+      - name: primary_plan_name
+        sql: PRIMARY_PLAN_NAME
+        type: string
+
+      - name: primary_plan_type
+        sql: PRIMARY_PLAN_TYPE
+        type: string
+
+      - name: primary_patientoutofpocket_amt
+        sql: PRIMARY_PATIENTOUTOFPOCKET_AMT
+        type: string
+
+      - name: primary_copay_amount
+        sql: PRIMARY_COPAY_AMOUNT
+        type: string
+
+      - name: primary_copay_type
+        sql: PRIMARY_COPAY_TYPE
+        type: string
+
+      - name: primary_deductible
+        sql: PRIMARY_DEDUCTIBLE
+        type: string
+
+      - name: primary_max_out_of_pocket_number
+        sql: PRIMARY_MAX_OUT_OF_POCKET_NUMBER
+        type: string
+
+      - name: primary_lifetime_max
+        sql: PRIMARY_LIFETIME_MAX
+        type: string
+
+      - name: secondary_payer_bin
+        sql: SECONDARY_PAYER_BIN
+        type: string
+
+      - name: secondary_group_number
+        sql: SECONDARY_GROUP_NUMBER
+        type: string
+
+      - name: secondary_payer_name
+        sql: SECONDARY_PAYER_NAME
+        type: string
+
+      - name: secondary_payer_type
+        sql: SECONDARY_PAYER_TYPE
+        type: string
+
+      - name: secondary_benefit_type
+        sql: SECONDARY_BENEFIT_TYPE
+        type: string
+
+      - name: secondary_plan_name
+        sql: SECONDARY_PLAN_NAME
+        type: string
+
+      - name: secondary_plan_type
+        sql: SECONDARY_PLAN_TYPE
+        type: string
+
+      - name: patient_outofpocket_amount
+        sql: PATIENT_OUTOFPOCKET_AMOUNT
+        type: string
+
+      - name: secondary_copay_amount
+        sql: SECONDARY_COPAY_AMOUNT
+        type: string
+
+      - name: secondary_copay_type
+        sql: SECONDARY_COPAY_TYPE
+        type: string
+
+      - name: secondary_deductible
+        sql: SECONDARY_DEDUCTIBLE
+        type: string
+
+      - name: secondary_max_outof_pocket
+        sql: SECONDARY_MAX_OUTOF_POCKET
+        type: string
+
+      - name: secondary_lifetime_max
+        sql: SECONDARY_LIFETIME_MAX
+        type: string
+
+      - name: hub_identifier
+        sql: HUB_IDENTIFIER
+        type: string
+
+      - name: specialty_pharmacy_name
+        sql: SPECIALTY_PHARMACY_NAME
+        type: string
+
+      - name: specialty_pharmacy_loc_name
+        sql: SPECIALTY_PHARMACY_LOC_NAME
+        type: string
+
+      - name: location_npi_number
+        sql: LOCATION_NPI_NUMBER
+        type: string
+
+      - name: pbm_name
+        sql: PBM_NAME
+        type: string
+
+      - name: diagnosis_description
+        sql: DIAGNOSIS_DESCRIPTION
+        type: string
+
+      - name: regimen
+        sql: REGIMEN
+        type: string
+
+      - name: prescribing_dose_volume
+        sql: PRESCRIBING_DOSE_VOLUME
+        type: string
+
+      - name: payer_city
+        sql: PAYER_CITY
+        type: string
+
+      - name: payer_state
+        sql: PAYER_STATE
+        type: string
+
+      - name: route_of_administration
+        sql: ROUTE_OF_ADMINISTRATION
+        type: string
+
+      - name: shipment_type
+        sql: SHIPMENT_TYPE
+        type: string
+
+      - name: free_goods_program
+        sql: FREE_GOODS_PROGRAM
+        type: string
+
+      - name: severity
+        sql: SEVERITY
+        type: string
+
+      - name: type
+        sql: TYPE
+        type: string
+
+      - name: lh_pat_id
+        sql: LH_PAT_ID
+        type: string
+
+      - name: mdm_pat_id
+        sql: MDM_PAT_ID
+        type: string
+
+      - name: calculated_icd_code
+        sql: CALCULATED_ICD_CODE
+        type: string
+
+      - name: indication_category
+        sql: INDICATION_CATEGORY
+        type: string
+
+      - name: is_active
+        sql: IS_ACTIVE
+        type: string
+
+      - name: effective_end_date
+        sql: EFFECTIVE_END_DATE
+        type: string
+
+      - name: primary_icd_codes
+        sql: PRIMARY_ICD_CODES
+        type: string
+
+      - name: rx_number
+        sql: RX_NUMBER
+        type: string
+
+      - name: refills_remaining
+        sql: REFILLS_REMAINING
+        type: string
+
+      - name: patient_weight
+        sql: PATIENT_WEIGHT
+        type: string
+
+      - name: spp_physician_id
+        sql: SPP_PHYSICIAN_ID
+        type: string
+
+      - name: npi
+        sql: NPI
+        type: string
+
+      - name: patient_yob
+        sql: PATIENT_YOB
+        type: string
+
+      - name: consent_status
+        sql: CONSENT_STATUS
+        type: string
+
+      - name: payer_zip
+        sql: PAYER_ZIP
+        type: string
+
+      - name: rx_type
+        sql: RX_TYPE
+        type: string
+
+      - name: primary_pa_required
+        sql: PRIMARY_PA_REQUIRED
+        type: string
+
+      - name: secondary_pa_required
+        sql: SECONDARY_PA_REQUIRED
+        type: string
+
+      - name: patient_state
+        sql: PATIENT_STATE
+        type: string
+
+      - name: patient_gender
+        sql: PATIENT_GENDER
+        type: string
+
+      - name: physician_zip
+        sql: PHYSICIAN_ZIP
+        type: string
+
+      - name: restatement_flag
+        sql: RESTATEMENT_FLAG
+        type: string
+
+      - name: location_dea
+        sql: LOCATION_DEA
+        type: string
+
+      - name: primary_pa_expiration_date
+        sql: PRIMARY_PA_EXPIRATION_DATE
+        type: string
+
+      - name: secondary_pa_expiration_date
+        sql: SECONDARY_PA_EXPIRATION_DATE
+        type: string
+
+      - name: adminsite_name
+        sql: ADMINSITE_NAME
+        type: string
+
+      - name: adminsite_city
+        sql: ADMINSITE_CITY
+        type: string
+
+      - name: adminsite_zip
+        sql: ADMINSITE_ZIP
+        type: string
+
+      - name: adminsite_phone
+        sql: ADMINSITE_PHONE
+        type: string
+
+      - name: date_written
+        sql: DATE_WRITTEN
+        type: time
+
+      - name: referral_date
+        sql: REFERRAL_DATE
+        type: time
+
+      - name: patient_first_ship_date
+        sql: PATIENT_FIRST_SHIP_DATE
+        type: time
+
+      - name: void_date
+        sql: VOID_DATE
+        type: time
+
+      - name: effective_start_date
+        sql: EFFECTIVE_START_DATE
+        type: time
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+
