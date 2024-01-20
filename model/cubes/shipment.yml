@@ -390,6 +390,10 @@ cubes:
         sql: DATE_TRUNC(SHIP_DATE,MONTH)
         type: time
 
+      - name: active_start
+        sql: DATE_ADD({ship_trunc},INTERVAL -2 MONTH)
+        type: time
+
     measures:
       - name: count
         type: count
