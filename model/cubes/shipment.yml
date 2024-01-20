@@ -387,7 +387,7 @@ cubes:
         type: number
 
       - name: ship_trunc
-        sql: DATE_TRUNC(TIMESTAMP(SHIP_DATE),MONTH)
+        sql: TIMESTAMP(DATE_TRUNC(SHIP_DATE,MONTH))
         type: time
 
     measures:
