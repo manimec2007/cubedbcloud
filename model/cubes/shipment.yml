@@ -395,7 +395,7 @@ cubes:
         type: count
 
     dimensions:
-      - name: ship_year
+      - name: ship_year_filter
         sql: ship_year
         type: number
 
