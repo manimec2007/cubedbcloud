@@ -397,7 +397,6 @@ cubes:
         sql: "CASE WHEN {ship_date} BETWEEN DATE_ADD(DATE_TRUNC({ship_date},MONTH),INTERVAL -2 MONTH) AND DATE_TRUNC({ship_date},MONTH) THEN 1 END"
         type: count_distinct
 
-
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
