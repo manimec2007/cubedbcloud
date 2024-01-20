@@ -395,7 +395,7 @@ cubes:
 
     dimensions:
       - name: year_filter
-        sql: EXTRACT(year  FROM  SHIP_DATE )
+        sql: EXTRACT(year  FROM  SHIP_DATE)
         type: number
 
     pre_aggregations:
