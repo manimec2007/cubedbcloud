@@ -18,11 +18,6 @@ cubes:
         sql: "{CUBE}.MY_DATE = {shipment}.SHIP_DATE"
         relationship: one_to_many
 
-      dimensions:
-      - name: patient_id
-        sql: MDM_PAT_ID
-        type: string
-
     measures:
       - name: count
         type: count
