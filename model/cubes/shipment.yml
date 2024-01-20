@@ -385,8 +385,6 @@ cubes:
       - name: ship_year 
         sql: EXTRACT(year  FROM  SHIP_DATE )
         type: number
-        filters:
-          - sql: "EXTRACT(year  FROM  SHIP_DATE )  = year_filter"
 
 
     measures:
