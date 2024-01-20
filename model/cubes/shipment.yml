@@ -381,6 +381,10 @@ cubes:
       - name: ship_month
         sql: FORMAT_DATE('%B', SHIP_DATE)
         type: string
+
+      - name: ship_year 
+        sql: EXTRACT(year  FROM  SHIP_DATE )
+        type: number
         filters:
           - sql: "EXTRACT(year  FROM  SHIP_DATE )  = year_filter"
 
