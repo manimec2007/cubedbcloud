@@ -393,7 +393,11 @@ cubes:
 
       - name: Dropoff
         type: count
-        
+
+    dimensions:
+      - name: city_filter
+        sql: city_filter
+        type: string
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
