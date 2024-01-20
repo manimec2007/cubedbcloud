@@ -394,7 +394,7 @@ cubes:
         type: count
       
       - name: patient_id
-        sql: "CASE WHEN {ship_date} BETWEEN DATE_ADD(DATE_TRUNC({ship_date},MONTH),INTERVAL -2 MONTH) AND DATE_TRUNC({ship_date},MONTH) THEN 1 END"
+        sql: "CASE WHEN {ship_date} BETWEEN DATE_ADD(DATE_TRUNC({ship_date},MONTH),INTERVAL -2 MONTH) AND DATE_TRUNC({ship_date},MONTH) THEN patient_id END"
         type: count_distinct
 
     pre_aggregations:
