@@ -397,6 +397,17 @@ cubes:
         sql: "CASE WHEN SHIP_DATE BETWEEN DATE_ADD(DATE_TRUNC(SHIP_DATE,MONTH),INTERVAL -2 MONTH) AND DATE_TRUNC(SHIP_DATE,MONTH) THEN MDM_PAT_ID END"
         type: count_distinct
 
+    dimensions:
+      - name: ship_active
+        sql: SHIP_DATE
+        type: time
+        filters: [{
+  "member": "ship_active",
+  "operator": "gt",
+  "values": "2022-01-01"
+}]
+
+
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
