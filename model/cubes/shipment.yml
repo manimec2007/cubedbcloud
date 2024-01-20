@@ -405,7 +405,7 @@ cubes:
         sql: MDM_PAT_ID
         type: count_distinct
         filters:
-          - sql: "{CUBE}.ship_trunc BETWEEN DATE_ADD(DATE_TRUNC({CUBE}.ship_trunc,MONTH),INTERVAL -2 MONTH) AND {CUBE}.ship_trunc"
+          - sql: "ship_trunc BETWEEN DATE_ADD(DATE_TRUNC(ship_trunc,MONTH),INTERVAL -2 MONTH) AND ship_trunc"
   
     pre_aggregations:
       # Pre-aggregation definitions go here.
