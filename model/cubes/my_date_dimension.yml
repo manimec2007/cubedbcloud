@@ -24,7 +24,6 @@ cubes:
       - name: active_start1
         sql: DATE_ADD({ship_trunc1},INTERVAL -2 MONTH)
         type: time
-      
 
     measures:
       - name: count
