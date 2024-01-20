@@ -410,6 +410,11 @@ cubes:
         type: count_distinct
         filters:
           - sql: "{ship_trunc} BETWEEN DATE_ADD({ship_trunc},INTERVAL -2 MONTH) AND {ship_trunc}"
+
+  - name: dim_shipment
+    sql_table: pharmsight_csl.shipment
+
+    
   
     pre_aggregations:
       # Pre-aggregation definitions go here.
