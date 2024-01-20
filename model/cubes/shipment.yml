@@ -378,6 +378,10 @@ cubes:
         sql: EFFECTIVE_START_DATE
         type: time
 
+      - name: ship_month
+        sql: FORMAT_DATE('%B', SHIP_DATE)
+        type: string
+
     measures:
       - name: count
         type: count
