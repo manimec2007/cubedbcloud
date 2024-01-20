@@ -393,6 +393,10 @@ cubes:
       - name: Dropoff
         type: count
 
+    dimensions:
+      - name: year_filter
+        sql: ship_year
+        type: number
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
