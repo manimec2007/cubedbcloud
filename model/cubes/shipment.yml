@@ -383,7 +383,7 @@ cubes:
         type: string
 
       - name: ship_year 
-        sql: EXTRACT(year  FROM  SHIP_DATE )
+        sql: EXTRACT(year  FROM  SHIP_DATE)
         type: number
 
     measures:
