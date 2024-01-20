@@ -399,10 +399,9 @@ cubes:
 
     dimensions:
       - name: ship_active
-        sql: SHIP_DATE
         type: time
         filters: [{
-  "member": "ship_active",
+  "member": "ship_date",
   "operator": "gt",
   "values": "2022-01-01"
 }]
