@@ -386,7 +386,6 @@ cubes:
         sql: EXTRACT(year  FROM  SHIP_DATE )
         type: number
 
-
     measures:
       - name: count
         type: count
