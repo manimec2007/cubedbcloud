@@ -6,7 +6,7 @@ cubes:
 
     dimensions:
       - name: ship_date
-        sql: SHIP_DATE
+        sql: TIMESTAMP(SHIP_DATE)
         type: time
         primary_key: true
 
