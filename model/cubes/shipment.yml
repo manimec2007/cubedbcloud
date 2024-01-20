@@ -407,7 +407,6 @@ cubes:
         filters:
           - sql: "{CUBE}.ship_trunc BETWEEN DATE_ADD(DATE_TRUNC({CUBE}.ship_trunc,MONTH),INTERVAL -2 MONTH) AND {CUBE}.ship_trunc"
   
-
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
