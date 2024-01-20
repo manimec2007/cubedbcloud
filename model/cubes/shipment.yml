@@ -394,6 +394,7 @@ cubes:
         type: count
       
       - name: patient_id
+        sql: "CASE WHEN {CUBE.number} > 100 THEN 'high' ELSE 'low' END"
         type: count_distinct
 
     pre_aggregations:
