@@ -383,7 +383,6 @@ cubes:
         type: string
 
 
-
     measures:
       - name: count
         type: count
