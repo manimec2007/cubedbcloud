@@ -386,6 +386,10 @@ cubes:
         sql: EXTRACT(year  FROM  SHIP_DATE)
         type: number
 
+      - name: ship_trunc
+        sql: DATE_TRUNC(SHIP_DATE,MONTH)
+        type: time
+
     measures:
       - name: count
         type: count
@@ -401,7 +405,7 @@ cubes:
         sql: MDM_PAT_ID
         type: count_distinct
         filters:
-          - sql: "{CUBE}.ship_date >= DATE_ADD(DATE_TRUNC({CUBE}.ship_date,MONTH),INTERVAL -3 MONTH)"
+          - sql: "{CUBE}.ship_trunc BETWEEN DATE_ADD(DATE_TRUNC({CUBE}.ship_trunc,MONTH),INTERVAL -2 MONTH) AND {CUBE}.ship_trunc"
   
 
     pre_aggregations:
