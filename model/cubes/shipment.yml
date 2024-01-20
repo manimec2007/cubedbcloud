@@ -400,7 +400,7 @@ cubes:
       - name: active_patients
         sql: "CASE WHEN SHIP_DATE BETWEEN DATE_ADD(DATE_TRUNC(SHIP_DATE,MONTH),INTERVAL -2 MONTH) AND DATE_TRUNC(SHIP_DATE,MONTH) THEN MDM_PAT_ID END"
         type: count_distinct
-
+        
       - name: new_active
         sql: MDM_PAT_ID
         type: count_distinct
