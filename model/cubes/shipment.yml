@@ -397,9 +397,11 @@ cubes:
         sql: "CASE WHEN SHIP_DATE BETWEEN DATE_ADD(DATE_TRUNC(SHIP_DATE,MONTH),INTERVAL -2 MONTH) AND DATE_TRUNC(SHIP_DATE,MONTH) THEN MDM_PAT_ID END"
         type: count_distinct
 
-    dimensions:
-      - name: ship_active
-        type: time
+      - name: new_active
+        sql: M
+        type: count_distinct
+        filters:
+          - sql: `${CUBE}.ship_date >= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL -3 MONTH)`
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
