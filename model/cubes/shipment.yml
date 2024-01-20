@@ -395,9 +395,9 @@ cubes:
         type: count
 
     dimensions:
-      - name: city_filter
-        sql: city_filter
-        type: string
+      - name: ship_year
+        sql: ship_year
+        type: number
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
