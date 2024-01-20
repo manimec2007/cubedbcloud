@@ -390,7 +390,7 @@ cubes:
       - name: count
         type: count
 
-      - name: Dropoff
+      - name: dropoff_patients
         type: count
       
       - name: active_patients
