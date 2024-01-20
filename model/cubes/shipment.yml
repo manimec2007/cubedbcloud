@@ -400,11 +400,7 @@ cubes:
     dimensions:
       - name: ship_active
         type: time
-        filters: [{
-  "member": "ship_date",
-  "operator": "gt",
-  "values": "2022-01-01"
-}]
+
 
 
     pre_aggregations:
