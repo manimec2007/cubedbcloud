@@ -401,7 +401,7 @@ cubes:
         sql: MDM_PAT_ID
         type: count_distinct
         filters:
-          - sql: `${CUBE}.ship_date >= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL -3 MONTH)`
+          - sql: "${CUBE}.ship_date >= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL -3 MONTH)"
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
