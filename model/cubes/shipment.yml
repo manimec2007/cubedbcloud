@@ -387,7 +387,7 @@ cubes:
         type: number
 
       - name: ship_trunc
-        sql: TIMESTAMP(SHIP_DATE)
+        sql: DATE_TRUNC(SHIP_DATE,MONTH)
         type: time
 
     measures:
@@ -405,7 +405,7 @@ cubes:
         sql: MDM_PAT_ID
         type: count_distinct
         filters:
-          - sql: "{ship_trunc} BETWEEN DATE_ADD(DATE_TRUNC({ship_trunc},MONTH),INTERVAL -2 MONTH) AND {ship_trunc}"
+          - sql: "{ship_trunc} BETWEEN DATE_ADD(ship_trunc,INTERVAL -2 MONTH) AND {ship_trunc}"
   
     pre_aggregations:
       # Pre-aggregation definitions go here.
