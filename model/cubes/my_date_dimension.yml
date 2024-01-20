@@ -2,6 +2,10 @@ cubes:
   - name: my_date_dimension
     sql_table: pharmsight_csl.MY_DATE_DIMENSION
 
+    joins:
+      - name: shipment
+        sql: "{CUBE}.MY_DATE = {shipment}.SHIP_DATE"
+        relationship: one_to_many
 
     dimensions:
       - name: my_date
@@ -12,11 +16,6 @@ cubes:
       - name: month_name
         sql: MONTH_NAME
         type: string
-
-    joins:
-      - name: shipment
-        sql: "{CUBE}.MY_DATE = {shipment}.SHIP_DATE"
-        relationship: one_to_many
 
     measures:
       - name: count
