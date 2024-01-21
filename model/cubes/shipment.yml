@@ -155,18 +155,6 @@ cubes:
         sql: FULL_PRODUCT_NAME
         type: string
 
-      - name: product_strength
-        sql: PRODUCT_STRENGTH
-        type: string
-
-      - name: product_form
-        sql: PRODUCT_FORM
-        type: string
-
-      - name: quantity_shipped
-        sql: QUANTITY_SHIPPED
-        type: string
-
       - name: physician_city
         sql: PHYSICIAN_CITY
         type: string
@@ -175,17 +163,9 @@ cubes:
         sql: PHYSICIAN_STATE
         type: string
 
-      - name: primary_payer_bin
-        sql: PRIMARY_PAYER_BIN
-        type: string
-
       - name: primary_payer_name
         sql: PRIMARY_PAYER_NAME
-        type: string
-
-      - name: primary_payer_type
-        sql: PRIMARY_PAYER_TYPE
-        type: string
+        type: string 
 
       - name: primary_plan_name
         sql: PRIMARY_PLAN_NAME
@@ -193,38 +173,6 @@ cubes:
 
       - name: primary_plan_type
         sql: PRIMARY_PLAN_TYPE
-        type: string
-
-      - name: secondary_payer_bin
-        sql: SECONDARY_PAYER_BIN
-        type: string
-
-      - name: secondary_payer_name
-        sql: SECONDARY_PAYER_NAME
-        type: string
-
-      - name: secondary_payer_type
-        sql: SECONDARY_PAYER_TYPE
-        type: string
-
-      - name: secondary_plan_name
-        sql: SECONDARY_PLAN_NAME
-        type: string
-
-      - name: secondary_plan_type
-        sql: SECONDARY_PLAN_TYPE
-        type: string
-
-      - name: specialty_pharmacy_name
-        sql: SPECIALTY_PHARMACY_NAME
-        type: string
-
-      - name: specialty_pharmacy_loc_name
-        sql: SPECIALTY_PHARMACY_LOC_NAME
-        type: string
-
-      - name: location_npi_number
-        sql: LOCATION_NPI_NUMBER
         type: string
 
       - name: regimen
@@ -243,26 +191,6 @@ cubes:
         sql: PAYER_STATE
         type: string
 
-      - name: route_of_administration
-        sql: ROUTE_OF_ADMINISTRATION
-        type: string
-
-      - name: shipment_type
-        sql: SHIPMENT_TYPE
-        type: string
-
-      - name: free_goods_program
-        sql: FREE_GOODS_PROGRAM
-        type: string
-
-      - name: severity
-        sql: SEVERITY
-        type: string
-
-      - name: type
-        sql: TYPE
-        type: string
-
       - name: lh_pat_id
         sql: LH_PAT_ID
         type: string
@@ -271,132 +199,20 @@ cubes:
         sql: MDM_PAT_ID
         type: string
 
-      - name: calculated_icd_code
-        sql: CALCULATED_ICD_CODE
-        type: string
-
       - name: indication_category
         sql: INDICATION_CATEGORY
-        type: string
-
-      - name: is_active
-        sql: IS_ACTIVE
-        type: string
-
-      - name: effective_end_date
-        sql: EFFECTIVE_END_DATE
-        type: string
-
-      - name: primary_icd_codes
-        sql: PRIMARY_ICD_CODES
-        type: string
-
-      - name: rx_number
-        sql: RX_NUMBER
-        type: string
-
-      - name: refills_remaining
-        sql: REFILLS_REMAINING
-        type: string
-
-      - name: patient_weight
-        sql: PATIENT_WEIGHT
-        type: string
-
-      - name: spp_physician_id
-        sql: SPP_PHYSICIAN_ID
-        type: string
-
-      - name: npi
-        sql: NPI
-        type: string
-
-      - name: patient_yob
-        sql: PATIENT_YOB
-        type: string
-
-      - name: consent_status
-        sql: CONSENT_STATUS
         type: string
 
       - name: payer_zip
         sql: PAYER_ZIP
         type: string
 
-      - name: rx_type
-        sql: RX_TYPE
-        type: string
-
-      - name: primary_pa_required
-        sql: PRIMARY_PA_REQUIRED
-        type: string
-
       - name: secondary_pa_required
         sql: SECONDARY_PA_REQUIRED
         type: string
 
-      - name: patient_state
-        sql: PATIENT_STATE
-        type: string
-
-      - name: patient_gender
-        sql: PATIENT_GENDER
-        type: string
-
-      - name: physician_zip
-        sql: PHYSICIAN_ZIP
-        type: string
-
-      - name: restatement_flag
-        sql: RESTATEMENT_FLAG
-        type: string
-
-      - name: location_dea
-        sql: LOCATION_DEA
-        type: string
-
-      - name: primary_pa_expiration_date
-        sql: PRIMARY_PA_EXPIRATION_DATE
-        type: string
-
-      - name: secondary_pa_expiration_date
-        sql: SECONDARY_PA_EXPIRATION_DATE
-        type: string
-
-      - name: adminsite_name
-        sql: ADMINSITE_NAME
-        type: string
-
-      - name: adminsite_city
-        sql: ADMINSITE_CITY
-        type: string
-
-      - name: adminsite_zip
-        sql: ADMINSITE_ZIP
-        type: string
-
-      - name: adminsite_phone
-        sql: ADMINSITE_PHONE
-        type: string
-
-      - name: date_written
-        sql: DATE_WRITTEN
-        type: time
-
-      - name: referral_date
-        sql: REFERRAL_DATE
-        type: time
-
       - name: patient_first_ship_date
         sql: PATIENT_FIRST_SHIP_DATE
-        type: time
-
-      - name: void_date
-        sql: VOID_DATE
-        type: time
-
-      - name: effective_start_date
-        sql: EFFECTIVE_START_DATE
         type: time
 
       - name: ship_month
