@@ -517,7 +517,7 @@ cubes:
         type: count_distinct
 
       - name: dropoff_patients_count
-        sql: "CASE WHEN {DRP}.FLG='DRP' THEN MDM_PAT_ID END"
+        sql: "CASE WHEN {CUBE}.FLG='DRP' THEN MDM_PAT_ID END"
         type: count_distinct
 
       - name: dispensed_patients_count
