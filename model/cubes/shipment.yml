@@ -527,7 +527,7 @@ cubes:
       - name: restart_patients_count
         sql: "CASE WHEN {CUBE}.FLG='RST' THEN MDM_PAT_ID END"
         type: count_distinct
-
+        
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
