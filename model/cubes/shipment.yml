@@ -116,13 +116,7 @@ cubes:
                         AND P.REPORT_DATE = P2.REPORT_DATE
                 )
           )
-          SELECT *,
-          (CASE WHEN FLG='DRP' THEN 1 END) AS DropOff_Patients_Flag,
-          (CASE WHEN FLG='NEW' THEN 1 END) AS New_Patients_Flag,
-          (CASE WHEN FLG='ACT' THEN 1 END) AS Active_Patients_Flag,
-          (CASE WHEN FLG='DIS' THEN 1 END) AS Dispensed_Patients_Flag,
-          (CASE WHEN FLG='RST' THEN 1 END) AS Restart_Patients_Flag,
-          (CASE WHEN FLG='PAT' THEN 1 END) AS Previous_Month_Active_Patients_Flag
+          SELECT *
           FROM Final
 
     joins: []
@@ -515,7 +509,7 @@ cubes:
 
     measures:
       - name: active_patients_count
-        sql: "CASE WHEN {CUBE}.Active_Patients_Flag=1 THEN MDM_PAT_ID END"
+        sql: "CASE WHEN {CUBE}.FLG='ACT' THEN MDM_PAT_ID END"
         type: count_distinct
 
     pre_aggregations:
