@@ -1,6 +1,129 @@
 cubes:
   - name: shipment
-    sql_table: pharmsight_csl.shipment
+    sql: WITH Periods
+          AS
+          (
+          SELECT YEAR,
+                MONTH,
+                MONTH_NAME,
+                MIN(MY_DATE) AS REPORT_DATE,
+                DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -2 MONTH) AS FST_DATE,
+                DATE_TRUNC(MIN(MY_DATE),MONTH) AS END_DATE,
+                DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -3 MONTH) AS AVL_DATE,
+                DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -1 MONTH) AS RST_DATE,
+                DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -4 MONTH) AS PRV_DATE
+          FROM `pharmsight-analytics.pharmsight_csl.MY_DATE_DIMENSION`
+          WHERE MY_DATE BETWEEN '2017-01-01' and '2023-12-31'
+          GROUP BY YEAR,
+                  MONTH,
+                  MONTH_NAME
+          ),
+          Patients
+          AS
+          (
+            SELECT *,
+                  DATE_TRUNC(SHIP_DATE,MONTH) AS UN_DATES,
+                  DATE_TRUNC(PATIENT_FIRST_SHIP_DATE,MONTH) AS FIRST_SHIP_DATE
+            FROM `pharmsight-analytics.pharmsight_csl.shipment`
+          ),
+          Final
+          AS
+          (
+                SELECT P.REPORT_DATE,
+                        P.YEAR,
+                        P.MONTH,
+                        P.MONTH_NAME,
+                        S.*,
+                        'DRP' AS FLG
+                FROM Periods P
+                INNER JOIN Patients S
+                ON S.UN_DATES = P.AVL_DATE
+                WHERE NOT EXISTS (
+                        SELECT P1.REPORT_DATE,
+                              S1.LH_PAT_ID
+                        FROM Periods P1
+                        INNER JOIN Patients S1
+                        ON S1.UN_DATES BETWEEN P1.FST_DATE AND P1.END_DATE
+                        WHERE S.LH_PAT_ID = S1.LH_PAT_ID
+                        AND P.REPORT_DATE = P1.REPORT_DATE
+                )
+                UNION ALL
+                SELECT P.REPORT_DATE,
+                        P.YEAR,
+                        P.MONTH,
+                        P.MONTH_NAME,
+                        S.*,
+                        'NEW' AS FLG
+                FROM Periods P
+                INNER JOIN Patients S
+                ON S.FIRST_SHIP_DATE = P.REPORT_DATE
+                UNION ALL
+                SELECT P.REPORT_DATE,
+                        P.YEAR,
+                        P.MONTH,
+                        P.MONTH_NAME,
+                        S.*,
+                        'ACT' AS FLG
+                FROM Periods P
+                INNER JOIN Patients S
+                ON S.UN_DATES BETWEEN P.FST_DATE AND P.END_DATE
+                UNION ALL
+                SELECT P.REPORT_DATE,
+                        P.YEAR,
+                        P.MONTH,
+                        P.MONTH_NAME,
+                        S.*,
+                        'PAT' AS FLG
+                FROM Periods P
+                INNER JOIN Patients S
+                ON S.UN_DATES BETWEEN P.AVL_DATE AND P.RST_DATE
+                UNION ALL
+                SELECT P.REPORT_DATE,
+                        P.YEAR,
+                        P.MONTH,
+                        P.MONTH_NAME,
+                        S.*,
+                        'DIS' AS FLG
+                FROM Periods P
+                INNER JOIN Patients S
+                ON S.UN_DATES = P.REPORT_DATE
+                UNION ALL
+                SELECT P.REPORT_DATE,
+                        P.YEAR,
+                        P.MONTH,
+                        P.MONTH_NAME,
+                        S.*,
+                        'RST' AS FLG
+                FROM Periods P
+                INNER JOIN Patients S
+                ON S.UN_DATES BETWEEN P.FST_DATE AND P.END_DATE
+                WHERE NOT EXISTS (
+                        SELECT P1.REPORT_DATE,
+                              S1.LH_PAT_ID
+                        FROM Periods P1
+                        INNER JOIN Patients S1
+                        ON S1.UN_DATES BETWEEN P.AVL_DATE AND P.RST_DATE
+                        WHERE S.LH_PAT_ID = S1.LH_PAT_ID
+                        AND P.REPORT_DATE = P1.REPORT_DATE
+                )
+                AND EXISTS (
+                        SELECT P2.REPORT_DATE,
+                              S2.LH_PAT_ID
+                        FROM Periods P2
+                        INNER JOIN Patients S2
+                        ON S2.UN_DATES = P.PRV_DATE
+                        WHERE S.LH_PAT_ID = S2.LH_PAT_ID
+                        AND P.REPORT_DATE = P2.REPORT_DATE
+                )
+          )
+          SELECT *,
+          (CASE WHEN FLG='DRP' THEN 1 END) AS DropOff_Patients_Flag,
+          (CASE WHEN FLG='NEW' THEN 1 END) AS New_Patients_Flag,
+          (CASE WHEN FLG='ACT' THEN 1 END) AS Active_Patients_Flag,
+          (CASE WHEN FLG='DIS' THEN 1 END) AS Dispensed_Patients_Flag,
+          (CASE WHEN FLG='RST' THEN 1 END) AS Restart_Patients_Flag,
+          (CASE WHEN FLG='PAT' THEN 1 END) AS Previous_Month_Active_Patients_Flag
+          FROM Final;
 
     joins: []
 
@@ -398,24 +521,9 @@ cubes:
       - name: count
         type: count
 
-      - name: dropoff_patients
+      - name: DroffOff
         type: count
-      
-      - name: active_patients
-        sql: "CASE WHEN SHIP_DATE BETWEEN DATE_ADD(DATE_TRUNC(SHIP_DATE,MONTH),INTERVAL -2 MONTH) AND DATE_TRUNC(SHIP_DATE,MONTH) THEN MDM_PAT_ID END"
-        type: count_distinct
-        
-      - name: new_active
-        sql: MDM_PAT_ID
-        type: count_distinct
-        filters:
-          - sql: "{ship_trunc} BETWEEN DATE_ADD({ship_trunc},INTERVAL -2 MONTH) AND {ship_trunc}"
 
-  - name: dim_shipment
-    sql_table: pharmsight_csl.shipment
-
-    
-  
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
