@@ -116,7 +116,12 @@ cubes:
                         AND P.REPORT_DATE = P2.REPORT_DATE
                 )
           )
-          SELECT *
+          SELECT MONTH,
+                 YEAR,
+                 MONTH_NAME,
+                 FLG,
+                 SHIP_DATE,
+                 FULL_PRODUCT_NAME
           FROM Final
 
     joins: []
@@ -126,10 +131,6 @@ cubes:
         sql: TIMESTAMP(SHIP_DATE)
         type: time
         primary_key: true
-
-      - name: referral_source
-        sql: REFERRAL_SOURCE
-        type: string
 
       - name: full_product_name
         sql: FULL_PRODUCT_NAME
@@ -143,48 +144,8 @@ cubes:
         sql: PRODUCT_FORM
         type: string
 
-      - name: ndc_number
-        sql: NDC_NUMBER
-        type: string
-
       - name: quantity_shipped
         sql: QUANTITY_SHIPPED
-        type: string
-
-      - name: quantity_uom
-        sql: QUANTITY_UOM
-        type: string
-
-      - name: days_supplied
-        sql: DAYS_SUPPLIED
-        type: string
-
-      - name: frequency
-        sql: FREQUENCY
-        type: string
-
-      - name: authorized_refills
-        sql: AUTHORIZED_REFILLS
-        type: string
-
-      - name: fill_number
-        sql: FILL_NUMBER
-        type: string
-
-      - name: secondary_icd_codes
-        sql: SECONDARY_ICD_CODES
-        type: string
-
-      - name: tertiary_icd_codes
-        sql: TERTIARY_ICD_CODES
-        type: string
-
-      - name: ship_to_location_type
-        sql: SHIP_TO_LOCATION_TYPE
-        type: string
-
-      - name: shipping_carrier
-        sql: SHIPPING_CARRIER
         type: string
 
       - name: physician_city
@@ -199,20 +160,12 @@ cubes:
         sql: PRIMARY_PAYER_BIN
         type: string
 
-      - name: primary_group_number
-        sql: PRIMARY_GROUP_NUMBER
-        type: string
-
       - name: primary_payer_name
         sql: PRIMARY_PAYER_NAME
         type: string
 
       - name: primary_payer_type
         sql: PRIMARY_PAYER_TYPE
-        type: string
-
-      - name: primary_benefit_type
-        sql: PRIMARY_BENEFIT_TYPE
         type: string
 
       - name: primary_plan_name
@@ -223,36 +176,8 @@ cubes:
         sql: PRIMARY_PLAN_TYPE
         type: string
 
-      - name: primary_patientoutofpocket_amt
-        sql: PRIMARY_PATIENTOUTOFPOCKET_AMT
-        type: string
-
-      - name: primary_copay_amount
-        sql: PRIMARY_COPAY_AMOUNT
-        type: string
-
-      - name: primary_copay_type
-        sql: PRIMARY_COPAY_TYPE
-        type: string
-
-      - name: primary_deductible
-        sql: PRIMARY_DEDUCTIBLE
-        type: string
-
-      - name: primary_max_out_of_pocket_number
-        sql: PRIMARY_MAX_OUT_OF_POCKET_NUMBER
-        type: string
-
-      - name: primary_lifetime_max
-        sql: PRIMARY_LIFETIME_MAX
-        type: string
-
       - name: secondary_payer_bin
         sql: SECONDARY_PAYER_BIN
-        type: string
-
-      - name: secondary_group_number
-        sql: SECONDARY_GROUP_NUMBER
         type: string
 
       - name: secondary_payer_name
@@ -263,44 +188,12 @@ cubes:
         sql: SECONDARY_PAYER_TYPE
         type: string
 
-      - name: secondary_benefit_type
-        sql: SECONDARY_BENEFIT_TYPE
-        type: string
-
       - name: secondary_plan_name
         sql: SECONDARY_PLAN_NAME
         type: string
 
       - name: secondary_plan_type
         sql: SECONDARY_PLAN_TYPE
-        type: string
-
-      - name: patient_outofpocket_amount
-        sql: PATIENT_OUTOFPOCKET_AMOUNT
-        type: string
-
-      - name: secondary_copay_amount
-        sql: SECONDARY_COPAY_AMOUNT
-        type: string
-
-      - name: secondary_copay_type
-        sql: SECONDARY_COPAY_TYPE
-        type: string
-
-      - name: secondary_deductible
-        sql: SECONDARY_DEDUCTIBLE
-        type: string
-
-      - name: secondary_max_outof_pocket
-        sql: SECONDARY_MAX_OUTOF_POCKET
-        type: string
-
-      - name: secondary_lifetime_max
-        sql: SECONDARY_LIFETIME_MAX
-        type: string
-
-      - name: hub_identifier
-        sql: HUB_IDENTIFIER
         type: string
 
       - name: specialty_pharmacy_name
@@ -313,14 +206,6 @@ cubes:
 
       - name: location_npi_number
         sql: LOCATION_NPI_NUMBER
-        type: string
-
-      - name: pbm_name
-        sql: PBM_NAME
-        type: string
-
-      - name: diagnosis_description
-        sql: DIAGNOSIS_DESCRIPTION
         type: string
 
       - name: regimen
