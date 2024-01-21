@@ -502,20 +502,16 @@ cubes:
         type: time
 
       - name: ship_month
-        sql: FORMAT_DATE('%B', SHIP_DATE)
-        type: string
-
-      - name: ship_year 
-        sql: EXTRACT(year  FROM  SHIP_DATE)
+        sql: MONTH
         type: number
 
-      - name: ship_trunc
-        sql: DATE_TRUNC(SHIP_DATE,MONTH)
-        type: time
+      - name: ship_year 
+        sql: YEAR
+        type: number
 
-      - name: active_start
-        sql: DATE_ADD({ship_trunc},INTERVAL -2 MONTH)
-        type: time
+      - name: ship_month_name
+        sql: MONTH_NAME
+        type: string
 
     measures:
       - name: count
