@@ -123,7 +123,7 @@ cubes:
           (CASE WHEN FLG='DIS' THEN 1 END) AS Dispensed_Patients_Flag,
           (CASE WHEN FLG='RST' THEN 1 END) AS Restart_Patients_Flag,
           (CASE WHEN FLG='PAT' THEN 1 END) AS Previous_Month_Active_Patients_Flag
-          FROM Final;
+          FROM Final
 
     joins: []
 
