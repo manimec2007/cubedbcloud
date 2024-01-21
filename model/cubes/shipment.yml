@@ -141,6 +141,7 @@ cubes:
                   INDICATION_CATEGORY,
                   PAYER_ZIP
           FROM Final
+          
 
     joins: []
 
