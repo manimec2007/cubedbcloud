@@ -514,10 +514,8 @@ cubes:
         type: string
 
     measures:
-      - name: count
-        type: count
-
-      - name: DroffOff
+      - name: active_patients_count
+        sql: "{CUBE}.Active_Patients_Flag=1"
         type: count
 
     pre_aggregations:
