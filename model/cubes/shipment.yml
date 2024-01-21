@@ -515,8 +515,8 @@ cubes:
 
     measures:
       - name: active_patients_count
-        sql: "{CUBE}.Active_Patients_Flag=1"
-        type: count
+        sql: "CASE WHEN {CUBE}.Active_Patients_Flag=1 THEN MDM_PAT_ID END"
+        type: count_distinct
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
