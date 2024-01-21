@@ -120,8 +120,26 @@ cubes:
                  YEAR,
                  MONTH_NAME,
                  FLG,
-                 SHIP_DATE,
-                 FULL_PRODUCT_NAME
+                PATIENT_FIRST_SHIP_DATE,
+                SHIP_DATE,
+                FULL_PRODUCT_NAME,
+                TERTIARY_ICD_CODES,
+                PHYSICIAN_CITY,
+                PHYSICIAN_STATE,
+                PRIMARY_PAYER_BIN,
+                PRIMARY_GROUP_NUMBER,
+                PRIMARY_PAYER_NAME,
+                PRIMARY_PAYER_TYPE,
+                PRIMARY_BENEFIT_TYPE,
+                PRIMARY_PLAN_NAME,
+                PRIMARY_PLAN_TYPE,
+                REGIMEN,
+                PAYER_CITY,
+                PAYER_STATE,
+                LH_PAT_ID,
+                MDM_PAT_ID,
+                INDICATION_CATEGORY,
+                PAYER_ZIP
           FROM Final
 
     joins: []
