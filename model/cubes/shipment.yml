@@ -512,6 +512,22 @@ cubes:
         sql: "CASE WHEN {CUBE}.FLG='ACT' THEN MDM_PAT_ID END"
         type: count_distinct
 
+      - name: new_patients_count
+        sql: "CASE WHEN {CUBE}.FLG='NEW' THEN MDM_PAT_ID END"
+        type: count_distinct
+
+      - name: dropoff_patients_count
+        sql: "CASE WHEN {DRP}.FLG='DRP' THEN MDM_PAT_ID END"
+        type: count_distinct
+
+      - name: dispensed_patients_count
+        sql: "CASE WHEN {CUBE}.FLG='DIS' THEN MDM_PAT_ID END"
+        type: count_distinct
+
+      - name: restart_patients_count
+        sql: "CASE WHEN {CUBE}.FLG='RST' THEN MDM_PAT_ID END"
+        type: count_distinct
+
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
