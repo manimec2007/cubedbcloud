@@ -227,6 +227,14 @@ cubes:
         sql: MONTH_NAME
         type: string
 
+      - name: specialty_pharmacy_name
+        sql: SPECIALTY_PHARMACY_NAME
+        type: string
+
+      - name: primary_payer_type
+        sql: PRIMARY_PAYER_TYPE
+        type: string
+
     measures:
       - name: active_patients_count
         sql: "CASE WHEN {CUBE}.FLG='ACT' THEN MDM_PAT_ID END"
