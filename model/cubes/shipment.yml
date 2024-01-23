@@ -139,7 +139,9 @@ cubes:
                   LH_PAT_ID,
                   MDM_PAT_ID,
                   INDICATION_CATEGORY,
-                  PAYER_ZIP
+                  PAYER_ZIP,
+                  SPECIALTY_PHARMACY_NAME,
+                  PRIMARY_PAYER_TYPE
           FROM Final
           
 
