@@ -226,6 +226,14 @@ cubes:
       - name: ship_month_name
         sql: MONTH_NAME
         type: string
+        
+      - name: specialty_pharmacy_name
+        sql: SPECIALTY_PHARMACY_NAME
+        type: string
+
+      - name: primary_payer_type
+        sql: PRIMARY_PAYER_TYPE
+        type: string
 
     measures:
       - name: active_patients_count
