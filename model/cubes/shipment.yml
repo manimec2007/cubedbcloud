@@ -140,8 +140,7 @@ cubes:
                   MDM_PAT_ID,
                   INDICATION_CATEGORY,
                   PAYER_ZIP,
-                  SPECIALTY_PHARMACY_NAME,
-                  PRIMARY_PAYER_TYPE
+                  SPECIALTY_PHARMACY_NAME
           FROM Final
           
 
