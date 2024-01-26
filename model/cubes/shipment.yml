@@ -227,9 +227,6 @@ cubes:
       - name: ship_month_name
         sql: MONTH_NAME
         type: string
-        order:
-        - - shipment.ship_month
-          - asc
 
       - name: specialty_pharmacy_name
         sql: SPECIALTY_PHARMACY_NAME
@@ -238,6 +235,10 @@ cubes:
       - name: primary_payer_type
         sql: PRIMARY_PAYER_TYPE
         type: string
+
+    order:
+      - name: shipment.ship_month
+        type: asc
 
     measures:
       - name: active_patients_count
