@@ -227,7 +227,8 @@ cubes:
       - name: ship_month_name
         sql: MONTH_NAME
         type: string
-        order: ["MONTH", "asc"]
+        order:
+          - "MONTH":"asc"
 
 
       - name: specialty_pharmacy_name
