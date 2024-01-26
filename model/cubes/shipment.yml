@@ -40,11 +40,11 @@ cubes:
                 ON S.UN_DATES = P.AVL_DATE
                 WHERE NOT EXISTS (
                         SELECT P1.REPORT_DATE,
-                              S1.LH_PAT_ID
+                              S1.MDM_PAT_ID
                         FROM Periods P1
                         INNER JOIN Patients S1
                         ON S1.UN_DATES BETWEEN P1.FST_DATE AND P1.END_DATE
-                        WHERE S.LH_PAT_ID = S1.LH_PAT_ID
+                        WHERE S.MDM_PAT_ID = S1.MDM_PAT_ID
                         AND P.REPORT_DATE = P1.REPORT_DATE
                 )
                 UNION ALL
@@ -99,20 +99,20 @@ cubes:
                 ON S.UN_DATES BETWEEN P.FST_DATE AND P.END_DATE
                 WHERE NOT EXISTS (
                         SELECT P1.REPORT_DATE,
-                              S1.LH_PAT_ID
+                              S1.MDM_PAT_ID
                         FROM Periods P1
                         INNER JOIN Patients S1
                         ON S1.UN_DATES BETWEEN P.AVL_DATE AND P.RST_DATE
-                        WHERE S.LH_PAT_ID = S1.LH_PAT_ID
+                        WHERE S.MDM_PAT_ID = S1.MDM_PAT_ID
                         AND P.REPORT_DATE = P1.REPORT_DATE
                 )
                 AND EXISTS (
                         SELECT P2.REPORT_DATE,
-                              S2.LH_PAT_ID
+                              S2.MDM_PAT_ID
                         FROM Periods P2
                         INNER JOIN Patients S2
                         ON S2.UN_DATES = P.PRV_DATE
-                        WHERE S.LH_PAT_ID = S2.LH_PAT_ID
+                        WHERE S.MDM_PAT_ID = S2.MDM_PAT_ID
                         AND P.REPORT_DATE = P2.REPORT_DATE
                 )
           )
