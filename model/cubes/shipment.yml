@@ -237,7 +237,7 @@ cubes:
         type: string
 
     order:
-      - name: shipment.ship_month
+      - name: SHIP_MONTH
         type: asc
 
     measures:
