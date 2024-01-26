@@ -236,6 +236,7 @@ cubes:
         sql: PRIMARY_PAYER_TYPE
         type: string
 
+
     measures:
       - name: active_patients_count
         sql: "CASE WHEN {CUBE}.FLG='ACT' THEN MDM_PAT_ID END"
