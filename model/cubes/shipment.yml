@@ -231,7 +231,6 @@ cubes:
         - - shipment.ship_month
           - asc
 
-
       - name: specialty_pharmacy_name
         sql: SPECIALTY_PHARMACY_NAME
         type: string
