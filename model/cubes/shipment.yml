@@ -142,6 +142,7 @@ cubes:
                   PAYER_ZIP,
                   SPECIALTY_PHARMACY_NAME
           FROM Final
+          ORDER BY YEAR,MONTH
           
 
     joins: []
