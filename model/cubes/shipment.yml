@@ -213,7 +213,7 @@ cubes:
         type: string
 
       - name: patient_first_ship_date
-        sql: PATIENT_FIRST_SHIP_DATE
+        sql: TIMESTAMP(PATIENT_FIRST_SHIP_DATE)
         type: time
 
       - name: ship_month
