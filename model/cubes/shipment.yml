@@ -150,7 +150,6 @@ cubes:
       - name: ship_date
         sql: TIMESTAMP(SHIP_DATE)
         type: time
-        primary_key: true
 
       - name: full_product_name
         sql: FULL_PRODUCT_NAME
