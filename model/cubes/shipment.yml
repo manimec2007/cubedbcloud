@@ -119,6 +119,7 @@ cubes:
           SELECT MONTH,
                  YEAR,
                  MONTH_NAME,
+                 REPORT_DATE,
                  FLG,
                   PATIENT_FIRST_SHIP_DATE,
                   SHIP_DATE,
