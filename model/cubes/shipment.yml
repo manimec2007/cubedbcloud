@@ -149,7 +149,7 @@ cubes:
 
     dimensions:
       - name: ship_date
-        sql: TIMESTAMP(SHIP_DATE)
+        sql: TIMESTAMP(REPORT_DATE)
         type: time
 
       - name: full_product_name
