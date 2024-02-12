@@ -1,7 +1,5 @@
 cubes:
   - name: shipment
-    refresh_key:
-    every: 5 minute
     sql: WITH Periods
           AS
           (
@@ -146,6 +144,8 @@ cubes:
                   SPECIALTY_PHARMACY_NAME
           FROM Final
           
+    refresh_key:
+      every: 5 minute
 
     joins: []
 
