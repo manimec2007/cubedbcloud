@@ -145,7 +145,7 @@ cubes:
           FROM Final
           
     refresh_key:
-      every: 5 minute
+      every: 1 month
 
     joins: []
 
