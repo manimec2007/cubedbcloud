@@ -89,16 +89,6 @@ cubes:
                       P.MONTH,
                       P.MONTH_NAME,
                       S.*,
-                      'PAT' AS FLG
-              FROM Periods P
-              INNER JOIN Patients S
-              ON S.UN_DATES BETWEEN P.AVL_DATE AND P.RST_DATE
-              UNION ALL
-              SELECT P.REPORT_DATE,
-                      P.YEAR,
-                      P.MONTH,
-                      P.MONTH_NAME,
-                      S.*,
                       'DIS' AS FLG
               FROM Periods P
               INNER JOIN Patients S
