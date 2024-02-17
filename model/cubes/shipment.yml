@@ -1,161 +1,161 @@
 cubes:
   - name: shipment
     sql:  WITH Periods
-          AS
-          (
-          SELECT YEAR,
+        AS
+        (
+        SELECT YEAR,
+              MONTH,
+              MONTH_NAME,
+              MIN(MY_DATE) AS REPORT_DATE,
+              DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -2 MONTH) AS FST_DATE,
+              DATE_TRUNC(MIN(MY_DATE),MONTH) AS END_DATE,
+              DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -3 MONTH) AS AVL_DATE,
+              DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -1 MONTH) AS RST_DATE,
+              DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -4 MONTH) AS PRV_DATE
+        FROM `pharmsight-analytics.pharmsight_csl.MY_DATE_DIMENSION`
+        WHERE MY_DATE BETWEEN '2017-01-01' and '2023-12-31'
+        GROUP BY YEAR,
                 MONTH,
+                MONTH_NAME
+        ),
+        Patients
+        AS
+        (
+          SELECT DISTINCT 
+                FULL_PRODUCT_NAME,
+                TERTIARY_ICD_CODES,
+                PHYSICIAN_CITY,
+                PHYSICIAN_STATE,
+                PRIMARY_PAYER_NAME,
+                PRIMARY_PAYER_TYPE,
+                PRIMARY_BENEFIT_TYPE,
+                PRIMARY_PLAN_NAME,
+                PRIMARY_PLAN_TYPE,
+                REGIMEN,
+                PAYER_CITY,
+                PAYER_STATE,
+                PAYER_ZIP,
+                MDM_PAT_ID,
+                INDICATION_CATEGORY,
+                SPECIALTY_PHARMACY_NAME,
+                DATE_TRUNC(SHIP_DATE,MONTH) AS UN_DATES,
+                DATE_TRUNC(PATIENT_FIRST_SHIP_DATE,MONTH) AS FIRST_SHIP_DATE
+          FROM `pharmsight-analytics.pharmsight_csl.shipment`
+        ),
+        Final
+        AS
+        (
+              SELECT P.REPORT_DATE,
+                      P.YEAR,
+                      P.MONTH,
+                      P.MONTH_NAME,
+                      S.*,
+                      'DRP' AS FLG
+              FROM Periods P
+              INNER JOIN Patients S
+              ON S.UN_DATES = P.AVL_DATE
+              WHERE NOT EXISTS (
+                      SELECT P1.REPORT_DATE,
+                            S1.MDM_PAT_ID
+                      FROM Periods P1
+                      INNER JOIN Patients S1
+                      ON S1.UN_DATES BETWEEN P1.FST_DATE AND P1.END_DATE
+                      WHERE S.MDM_PAT_ID = S1.MDM_PAT_ID
+                      AND P.REPORT_DATE = P1.REPORT_DATE
+              )
+              UNION ALL
+              SELECT P.REPORT_DATE,
+                      P.YEAR,
+                      P.MONTH,
+                      P.MONTH_NAME,
+                      S.*,
+                      'NEW' AS FLG
+              FROM Periods P
+              INNER JOIN Patients S
+              ON S.FIRST_SHIP_DATE = P.REPORT_DATE
+              UNION ALL
+              SELECT P.REPORT_DATE,
+                      P.YEAR,
+                      P.MONTH,
+                      P.MONTH_NAME,
+                      S.*,
+                      'ACT' AS FLG
+              FROM Periods P
+              INNER JOIN Patients S
+              ON S.UN_DATES BETWEEN P.FST_DATE AND P.END_DATE
+              UNION ALL
+              SELECT P.REPORT_DATE,
+                      P.YEAR,
+                      P.MONTH,
+                      P.MONTH_NAME,
+                      S.*,
+                      'PAT' AS FLG
+              FROM Periods P
+              INNER JOIN Patients S
+              ON S.UN_DATES BETWEEN P.AVL_DATE AND P.RST_DATE
+              UNION ALL
+              SELECT P.REPORT_DATE,
+                      P.YEAR,
+                      P.MONTH,
+                      P.MONTH_NAME,
+                      S.*,
+                      'DIS' AS FLG
+              FROM Periods P
+              INNER JOIN Patients S
+              ON S.UN_DATES = P.REPORT_DATE
+              UNION ALL
+              SELECT P.REPORT_DATE,
+                      P.YEAR,
+                      P.MONTH,
+                      P.MONTH_NAME,
+                      S.*,
+                      'RST' AS FLG
+              FROM Periods P
+              INNER JOIN Patients S
+              ON S.UN_DATES BETWEEN P.FST_DATE AND P.END_DATE
+              WHERE NOT EXISTS (
+                      SELECT P1.REPORT_DATE,
+                            S1.MDM_PAT_ID
+                      FROM Periods P1
+                      INNER JOIN Patients S1
+                      ON S1.UN_DATES BETWEEN P.AVL_DATE AND P.RST_DATE
+                      WHERE S.MDM_PAT_ID = S1.MDM_PAT_ID
+                      AND P.REPORT_DATE = P1.REPORT_DATE
+              )
+              AND EXISTS (
+                      SELECT P2.REPORT_DATE,
+                            S2.MDM_PAT_ID
+                      FROM Periods P2
+                      INNER JOIN Patients S2
+                      ON S2.UN_DATES = P.PRV_DATE
+                      WHERE S.MDM_PAT_ID = S2.MDM_PAT_ID
+                      AND P.REPORT_DATE = P2.REPORT_DATE
+              )
+        ),
+        DST AS
+        (
+        SELECT  MONTH,
+                YEAR,
                 MONTH_NAME,
-                MIN(MY_DATE) AS REPORT_DATE,
-                DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -2 MONTH) AS FST_DATE,
-                DATE_TRUNC(MIN(MY_DATE),MONTH) AS END_DATE,
-                DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -3 MONTH) AS AVL_DATE,
-                DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -1 MONTH) AS RST_DATE,
-                DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -4 MONTH) AS PRV_DATE
-          FROM `pharmsight-analytics.pharmsight_csl.MY_DATE_DIMENSION`
-          WHERE MY_DATE BETWEEN '2017-01-01' and '2023-12-31'
-          GROUP BY YEAR,
-                  MONTH,
-                  MONTH_NAME
-          ),
-          Patients
-          AS
-          (
-            SELECT DISTINCT 
-                  FULL_PRODUCT_NAME,
-                  TERTIARY_ICD_CODES,
-                  PHYSICIAN_CITY,
-                  PHYSICIAN_STATE,
-                  PRIMARY_PAYER_NAME,
-                  PRIMARY_PAYER_TYPE,
-                  PRIMARY_BENEFIT_TYPE,
-                  PRIMARY_PLAN_NAME,
-                  PRIMARY_PLAN_TYPE,
-                  REGIMEN,
-                  PAYER_CITY,
-                  PAYER_STATE,
-                  PAYER_ZIP,
-                  MDM_PAT_ID,
-                  INDICATION_CATEGORY,
-                  SPECIALTY_PHARMACY_NAME,
-                  DATE_TRUNC(SHIP_DATE,MONTH) AS UN_DATES,
-                  DATE_TRUNC(PATIENT_FIRST_SHIP_DATE,MONTH) AS FIRST_SHIP_DATE
-            FROM `pharmsight-analytics.pharmsight_csl.shipment`
-          ),
-          Final
-          AS
-          (
-                SELECT P.REPORT_DATE,
-                        P.YEAR,
-                        P.MONTH,
-                        P.MONTH_NAME,
-                        S.*,
-                        'DRP' AS FLG
-                FROM Periods P
-                INNER JOIN Patients S
-                ON S.UN_DATES = P.AVL_DATE
-                WHERE NOT EXISTS (
-                        SELECT P1.REPORT_DATE,
-                              S1.MDM_PAT_ID
-                        FROM Periods P1
-                        INNER JOIN Patients S1
-                        ON S1.UN_DATES BETWEEN P1.FST_DATE AND P1.END_DATE
-                        WHERE S.MDM_PAT_ID = S1.MDM_PAT_ID
-                        AND P.REPORT_DATE = P1.REPORT_DATE
-                )
-                UNION ALL
-                SELECT P.REPORT_DATE,
-                        P.YEAR,
-                        P.MONTH,
-                        P.MONTH_NAME,
-                        S.*,
-                        'NEW' AS FLG
-                FROM Periods P
-                INNER JOIN Patients S
-                ON S.FIRST_SHIP_DATE = P.REPORT_DATE
-                UNION ALL
-                SELECT P.REPORT_DATE,
-                        P.YEAR,
-                        P.MONTH,
-                        P.MONTH_NAME,
-                        S.*,
-                        'ACT' AS FLG
-                FROM Periods P
-                INNER JOIN Patients S
-                ON S.UN_DATES BETWEEN P.FST_DATE AND P.END_DATE
-                UNION ALL
-                SELECT P.REPORT_DATE,
-                        P.YEAR,
-                        P.MONTH,
-                        P.MONTH_NAME,
-                        S.*,
-                        'PAT' AS FLG
-                FROM Periods P
-                INNER JOIN Patients S
-                ON S.UN_DATES BETWEEN P.AVL_DATE AND P.RST_DATE
-                UNION ALL
-                SELECT P.REPORT_DATE,
-                        P.YEAR,
-                        P.MONTH,
-                        P.MONTH_NAME,
-                        S.*,
-                        'DIS' AS FLG
-                FROM Periods P
-                INNER JOIN Patients S
-                ON S.UN_DATES = P.REPORT_DATE
-                UNION ALL
-                SELECT P.REPORT_DATE,
-                        P.YEAR,
-                        P.MONTH,
-                        P.MONTH_NAME,
-                        S.*,
-                        'RST' AS FLG
-                FROM Periods P
-                INNER JOIN Patients S
-                ON S.UN_DATES BETWEEN P.FST_DATE AND P.END_DATE
-                WHERE NOT EXISTS (
-                        SELECT P1.REPORT_DATE,
-                              S1.MDM_PAT_ID
-                        FROM Periods P1
-                        INNER JOIN Patients S1
-                        ON S1.UN_DATES BETWEEN P.AVL_DATE AND P.RST_DATE
-                        WHERE S.MDM_PAT_ID = S1.MDM_PAT_ID
-                        AND P.REPORT_DATE = P1.REPORT_DATE
-                )
-                AND EXISTS (
-                        SELECT P2.REPORT_DATE,
-                              S2.MDM_PAT_ID
-                        FROM Periods P2
-                        INNER JOIN Patients S2
-                        ON S2.UN_DATES = P.PRV_DATE
-                        WHERE S.MDM_PAT_ID = S2.MDM_PAT_ID
-                        AND P.REPORT_DATE = P2.REPORT_DATE
-                )
-          ),
-          DST AS
-          (
-          SELECT  MONTH,
-                  YEAR,
-                  MONTH_NAME,
-                  REPORT_DATE,
-                  FLG,
-                  FULL_PRODUCT_NAME,
-                  TERTIARY_ICD_CODES,
-                  PHYSICIAN_CITY,
-                  PHYSICIAN_STATE,
-                  PRIMARY_PAYER_NAME,
-                  PRIMARY_PAYER_TYPE,
-                  PRIMARY_BENEFIT_TYPE,
-                  PRIMARY_PLAN_NAME,
-                  PRIMARY_PLAN_TYPE,
-                  REGIMEN,
-                  PAYER_CITY,
-                  PAYER_STATE,
-                  MDM_PAT_ID,
-                  INDICATION_CATEGORY,
-                  PAYER_ZIP,
-                  SPECIALTY_PHARMACY_NAME
-          FROM Final
+                REPORT_DATE,
+                FLG,
+                FULL_PRODUCT_NAME,
+                TERTIARY_ICD_CODES,
+                PHYSICIAN_CITY,
+                PHYSICIAN_STATE,
+                PRIMARY_PAYER_NAME,
+                PRIMARY_PAYER_TYPE,
+                PRIMARY_BENEFIT_TYPE,
+                PRIMARY_PLAN_NAME,
+                PRIMARY_PLAN_TYPE,
+                REGIMEN,
+                PAYER_CITY,
+                PAYER_STATE,
+                MDM_PAT_ID,
+                INDICATION_CATEGORY,
+                PAYER_ZIP,
+                SPECIALTY_PHARMACY_NAME
+        FROM Final
           
     refresh_key:
       every: 6 week
