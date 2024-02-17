@@ -195,20 +195,12 @@ cubes:
         sql: REGIMEN
         type: string
 
-      - name: prescribing_dose_volume
-        sql: PRESCRIBING_DOSE_VOLUME
-        type: string
-
       - name: payer_city
         sql: PAYER_CITY
         type: string
 
       - name: payer_state
         sql: PAYER_STATE
-        type: string
-
-      - name: lh_pat_id
-        sql: LH_PAT_ID
         type: string
 
       - name: mdm_pat_id
@@ -222,14 +214,6 @@ cubes:
       - name: payer_zip
         sql: PAYER_ZIP
         type: string
-
-      - name: secondary_pa_required
-        sql: SECONDARY_PA_REQUIRED
-        type: string
-
-      - name: patient_first_ship_date
-        sql: TIMESTAMP(PATIENT_FIRST_SHIP_DATE)
-        type: time
 
       - name: ship_month
         sql: MONTH
