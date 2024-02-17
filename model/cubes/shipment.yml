@@ -1,6 +1,6 @@
 cubes:
   - name: shipment
-    sql: WITH Periods
+    sql:  WITH Periods
           AS
           (
           SELECT YEAR,
@@ -21,7 +21,23 @@ cubes:
           Patients
           AS
           (
-            SELECT *,
+            SELECT DISTINCT 
+                  FULL_PRODUCT_NAME,
+                  TERTIARY_ICD_CODES,
+                  PHYSICIAN_CITY,
+                  PHYSICIAN_STATE,
+                  PRIMARY_PAYER_NAME,
+                  PRIMARY_PAYER_TYPE,
+                  PRIMARY_BENEFIT_TYPE,
+                  PRIMARY_PLAN_NAME,
+                  PRIMARY_PLAN_TYPE,
+                  REGIMEN,
+                  PAYER_CITY,
+                  PAYER_STATE,
+                  PAYER_ZIP,
+                  MDM_PAT_ID,
+                  INDICATION_CATEGORY,
+                  SPECIALTY_PHARMACY_NAME,
                   DATE_TRUNC(SHIP_DATE,MONTH) AS UN_DATES,
                   DATE_TRUNC(PATIENT_FIRST_SHIP_DATE,MONTH) AS FIRST_SHIP_DATE
             FROM `pharmsight-analytics.pharmsight_csl.shipment`
@@ -115,20 +131,18 @@ cubes:
                         WHERE S.MDM_PAT_ID = S2.MDM_PAT_ID
                         AND P.REPORT_DATE = P2.REPORT_DATE
                 )
-          )
-          SELECT MONTH,
-                 YEAR,
-                 MONTH_NAME,
-                 REPORT_DATE,
-                 FLG,
-                  PATIENT_FIRST_SHIP_DATE,
-                  SHIP_DATE,
+          ),
+          DST AS
+          (
+          SELECT  MONTH,
+                  YEAR,
+                  MONTH_NAME,
+                  REPORT_DATE,
+                  FLG,
                   FULL_PRODUCT_NAME,
                   TERTIARY_ICD_CODES,
                   PHYSICIAN_CITY,
                   PHYSICIAN_STATE,
-                  PRIMARY_PAYER_BIN,
-                  PRIMARY_GROUP_NUMBER,
                   PRIMARY_PAYER_NAME,
                   PRIMARY_PAYER_TYPE,
                   PRIMARY_BENEFIT_TYPE,
@@ -137,7 +151,6 @@ cubes:
                   REGIMEN,
                   PAYER_CITY,
                   PAYER_STATE,
-                  LH_PAT_ID,
                   MDM_PAT_ID,
                   INDICATION_CATEGORY,
                   PAYER_ZIP,
