@@ -131,9 +131,7 @@ cubes:
                       WHERE S.MDM_PAT_ID = S2.MDM_PAT_ID
                       AND P.REPORT_DATE = P2.REPORT_DATE
               )
-        ),
-        DST AS
-        (
+        )
         SELECT  MONTH,
                 YEAR,
                 MONTH_NAME,
