@@ -224,8 +224,8 @@ cubes:
         type: string 
 
         // Subquery dimension for "RST" patients
-    restartPatientFlag: {
-      sql: `
+    restartPatientFlag: 
+      sql: |
         SELECT 
           MDM_PAT_ID,
           CASE 
@@ -254,8 +254,8 @@ cubes:
       `,
       type: `string`,
       subQuery: true,
-    },
-  },
+    
+  
 
 
 
@@ -281,18 +281,18 @@ cubes:
         type: count_distinct
 
 
-    pre_aggregations: {
+    pre_aggregations: 
     // Define pre-aggregations here
-    restartPatients: {
+    restartPatients: 
       type: `rollup`,
       measureReferences: [restartPatientsCount],
       dimensionReferences: [restartPatientFlag, shipMonth, shipYear],
       timeDimensionReference: shipDate,
       granularity: `month`,
-    },
-    // Other pre-aggregations can be defined as needed
-  }
-});
+    
+    
+
+
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
 
