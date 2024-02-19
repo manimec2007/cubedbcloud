@@ -276,9 +276,9 @@ cubes:
 
 
     pre_aggregations: 
-     restartPatients: 
-     type: rollup
-     measureReferences: [restartPatientsCount]
-     dimensionReferences: [restartPatientFlag, shipMonth, shipYear]
-     timeDimensionReference: shipDate
-     granularity: month
+      restartPatients: 
+       type: rollup
+       measureReferences: [restartPatientsCount]
+       dimensionReferences: [restartPatientFlag, shipMonth, shipYear]
+       timeDimensionReference: shipDate
+       granularity: month
