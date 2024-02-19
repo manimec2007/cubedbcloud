@@ -223,7 +223,7 @@ cubes:
         sql: PRIMARY_PAYER_TYPE
         type: string 
 
-        // Subquery dimension for "RST" patients
+        #Subquery dimension for "RST" patients
     restartPatientFlag: 
       sql: |
         SELECT 
