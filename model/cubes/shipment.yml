@@ -223,7 +223,7 @@ cubes:
         sql: PRIMARY_PAYER_TYPE
         type: string 
         
-      -name:restartPatientFlag
+      - name:restartPatientFlag
         sql:SELECT MDM_PAT_ID,
               CASE 
                WHEN UN_DATES BETWEEN FST_DATE AND END_DATE 
