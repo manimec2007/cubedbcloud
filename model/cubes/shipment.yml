@@ -223,7 +223,7 @@ cubes:
         sql: PRIMARY_PAYER_TYPE
         type: string 
         
-      dimensions:
+      
       - name: restartPatientFlag
         sql: |
           SELECT MDM_PAT_ID,
