@@ -275,14 +275,16 @@ cubes:
         type: count_distinct
 
 
-    pre_aggregations: 
-    # Define pre-aggregations here
-      - name: restartPatients: 
-        type: `rollup`,
-        measureReferences: [restartPatientsCount],
-        dimensionReferences: [restartPatientFlag, shipMonth, shipYear],
-        timeDimensionReference: shipDate,
-        granularity: `month`,
+       pre_aggregations: 
+       restartPatients: 
+         type: rollup
+         measureReferences: [restartPatientsCount]
+         dimensionReferences: [restartPatientFlag, shipMonth, shipYear]
+         timeDimensionReference: shipDate
+         granularity: month
+    
+   
+ 
     
     
 
