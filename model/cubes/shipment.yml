@@ -221,38 +221,9 @@ cubes:
 
       - name: primary_payer_type
         sql: PRIMARY_PAYER_TYPE
-        type: string 
-        
-      
-      - name: restartPatientFlag
-        sql: |
-          SELECT MDM_PAT_ID,
-                 CASE 
-                   WHEN UN_DATES BETWEEN FST_DATE AND END_DATE 
-                   AND NOT EXISTS (
-                     SELECT 1
-                     FROM Patients S1
-                     JOIN Periods P1 ON S1.UN_DATES BETWEEN P1.AVL_DATE AND P1.RST_DATE
-                     WHERE S1.MDM_PAT_ID = Patients.MDM_PAT_ID
-                     AND Periods.REPORT_DATE = P1.REPORT_DATE
-                   )
-                   AND EXISTS (
-                     SELECT 1
-                     FROM Patients S2
-                     JOIN Periods P2 ON S2.UN_DATES = P2.PRV_DATE
-                     WHERE S2.MDM_PAT_ID = Patients.MDM_PAT_ID
-                     AND Periods.REPORT_DATE = P2.REPORT_DATE
-                   ) THEN 'RST'
-                   ELSE 'OTHER'
-                 END AS STATUS
-          FROM Patients
-          JOIN Periods ON Patients.UN_DATES BETWEEN Periods.FST_DATE AND Periods.END_DATE
-          GROUP BY MDM_PAT_ID
         type: string
-        subQuery: true
 
 
-      
     measures:
       - name: active_patients_count
         sql: "CASE WHEN {CUBE}.FLG='ACT' THEN MDM_PAT_ID END"
@@ -275,10 +246,6 @@ cubes:
         type: count_distinct
 
 
-    pre_aggregations: 
-      - name: restartPatients 
-        type: rollup
-        measureReferences: [restartPatientsCount]
-        dimensionReferences: [restartPatientFlag, shipMonth, shipYear]
-        timeDimensionReference: shipDate
-        granularity: month
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
