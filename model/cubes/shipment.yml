@@ -247,5 +247,444 @@ cubes:
 
 
     pre_aggregations:
-      # Pre-aggregation definitions go here.
-      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+      - name: aggByMonthByPhysicianCity
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.physician_city
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+
+      - name: aggByMonthByPhysicianState
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.physician_state
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByMonthByPrimaryPayerName
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.primary_payer_name
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByMonthByPrimaryPlanName
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.primary_plan_name
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByMonthByProduct
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.full_product_name
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByShipMonth
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.ship_month
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggBySpecialtyPharmacyName
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.specialty_pharmacy_name
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByShipYear
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.ship_year
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByShipMonthName
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.ship_month_name
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByPrimaryPayerType
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.primary_payer_type
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByRegimen
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.regimen
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByPrimaryPlanType
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.primary_plan_type
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByShipDate
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.ship_date
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByPayerCity
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.payer_city
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByPayerState
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.payer_state
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByIndicationCategory
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.indication_category
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+      - name: aggByPayerZip
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.payer_zip
+        timeDimension: shipment.ship_date
+        granularity: 'month'
+        partitionGranularity: 'year'
+
+    #Pre_aggregations by LLM
+      - name: aggLLMByMonthByPhysicianCity
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.physician_city
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+
+      - name: aggLLMByMonthByPhysicianState
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.physician_state
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByMonthByPrimaryPayerName
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.primary_payer_name
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByMonthByPrimaryPlanName
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.primary_plan_name
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByMonthByProduct
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.full_product_name
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByShipMonth
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMBySpecialtyPharmacyName
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.specialty_pharmacy_name
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByShipYear
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name 
+
+      - name: aggLLMByShipMonthName
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByPrimaryPayerType
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.primary_payer_type
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByRegimen
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.regimen
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByPrimaryPlanType
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.primary_plan_type
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByShipDate
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.ship_date
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByPayerCity
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.payer_city
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByPayerState
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.payer_state
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByIndicationCategory
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.indication_category
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
+
+      - name: aggLLMByPayerZip
+        measures:
+          - active_patients_count
+          - new_patients_count
+          - dropoff_patients_count
+          - dispensed_patients_count
+          - restart_patients_count
+        dimensions:
+          - shipment.payer_zip
+          - shipment.ship_month
+          - shipment.ship_year
+          - shipment.ship_month_name
