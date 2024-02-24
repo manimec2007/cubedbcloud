@@ -225,6 +225,9 @@ cubes:
         sql: PRIMARY_PAYER_TYPE
         type: string
 
+      - name: quantity_shipped
+        sql: QUANTITY_SHIPPED
+        type: number
 
     measures:
       - name: active_patients_count
