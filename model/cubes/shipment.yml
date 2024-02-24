@@ -259,13 +259,12 @@ cubes:
         type: number
 
       - name: churn_rate
-        sql:  "({dropoff_patients_count} / NULLIF(LAG({active_patients_count}) OVER (ORDER BY YEAR,MONTH),0)"
+        sql:  "({dropoff_patients_count} / NULLIF({active_previous_month},0)"
         type: number
 
       - name: net_patient_gain
         sql: "{new_patients_count} + {restart_patients_count} - {dropoff_patients_count}"
         type: number
-
 
 
       - name: internal_switch
