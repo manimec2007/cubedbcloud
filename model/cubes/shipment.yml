@@ -38,6 +38,7 @@ cubes:
                 MDM_PAT_ID,
                 INDICATION_CATEGORY,
                 SPECIALTY_PHARMACY_NAME,
+                QUANTITY_SHIPPED,
                 DATE_TRUNC(SHIP_DATE,MONTH) AS UN_DATES,
                 DATE_TRUNC(PATIENT_FIRST_SHIP_DATE,MONTH) AS FIRST_SHIP_DATE
           FROM `pharmsight-analytics.pharmsight_csl.shipment`
@@ -142,7 +143,8 @@ cubes:
                 MDM_PAT_ID,
                 INDICATION_CATEGORY,
                 PAYER_ZIP,
-                SPECIALTY_PHARMACY_NAME
+                SPECIALTY_PHARMACY_NAME,
+                QUANTITY_SHIPPED
         FROM Final
           
     refresh_key:
@@ -245,6 +247,33 @@ cubes:
         sql: "CASE WHEN {CUBE}.FLG='RST' THEN MDM_PAT_ID END"
         type: count_distinct
 
+      - name: compliance
+        sql: "NULLIF({dispensed_patients_count}, 0) / NULLIF({active_patients_count}, 1)"
+        type: number
+
+      - name: churn_rate
+        sql:  "CASE WHEN LAG({active_patients_count}) OVER (ORDER BY MONTH) IS NULL THEN NULL ELSE ({dropoff_patients_count} / LAG({active_patients_count}) OVER (ORDER BY MONTH)) END"
+        type: number
+
+      - name: net_patient_gain
+        sql: "{new_patients_count} + {restart_patients_count} - {dropoff_patients_count}"
+        type: number
+
+      - name: active_previous_month
+        sql: "CASE WHEN LAG({active_patients_count}) OVER (ORDER BY MONTH) IS NULL THEN NULL ELSE LAG({active_patients_count}) OVER (ORDER BY MONTH) END"
+        type: number
+
+      - name: internal_switch
+        sql: "{active_patients_count} - {active_previous_month} - ({net_patient_gain})"
+        type: number
+
+      - name: units_dispensed
+        sql: "SUM({quantity_shipped})"
+        type: number
+
+      - name: volume_per_dispense
+        sql: "IFNULL({units_dispensed} / NULLIF({dispensed_patients_count}, 0), 0)"
+        type: number
 
     pre_aggregations:
       - name: aggByMonthByPhysicianCity
