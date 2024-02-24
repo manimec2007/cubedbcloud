@@ -275,6 +275,7 @@ cubes:
         sql: "IFNULL({units_dispensed} / NULLIF({dispensed_patients_count}, 0), 0)"
         type: number
 
+
     pre_aggregations:
       - name: aggByMonthByPhysicianCity
         measures:
