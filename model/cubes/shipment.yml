@@ -122,6 +122,16 @@ cubes:
                       WHERE S.MDM_PAT_ID = S2.MDM_PAT_ID
                       AND P.REPORT_DATE = P2.REPORT_DATE
               )
+              UNION ALL
+              SELECT P.REPORT_DATE,
+                      P.YEAR,
+                      P.MONTH,
+                      P.MONTH_NAME,
+                      S.*,
+                      'PAT' AS FLG
+              FROM Periods P
+              INNER JOIN Patients S
+              ON S.UN_DATES BETWEEN P.AVL_DATE AND P.RST_DATE
         )
         SELECT  MONTH,
                 YEAR,
@@ -251,15 +261,15 @@ cubes:
         type: count_distinct
 
       - name: active_previous_month
-        sql: "LAG({active_patients_count}) OVER (ORDER BY YEAR,MONTH)"
-        type: number
+        sql: "CASE WHEN {CUBE}.FLG='PAT' THEN MDM_PAT_ID END"
+        type: count_distinct
 
       - name: compliance
-        sql: "{dispensed_patients_count} / NULLIF({active_patients_count}, 0)"
+        sql: "IFNULL({dispensed_patients_count} / NULLIF({active_patients_count}, 0),0)"
         type: number
 
       - name: churn_rate
-        sql:  "({dropoff_patients_count} / NULLIF({active_previous_month},0))"
+        sql:  "IFNULL({dropoff_patients_count} / NULLIF({active_previous_month},0),0)"
         type: number
 
       - name: net_patient_gain
@@ -267,7 +277,7 @@ cubes:
         type: number
 
       - name: internal_switch
-        sql: "{active_patients_count} - IFNULL({active_previous_month},0) - ({net_patient_gain})"
+        sql: "{active_patients_count} - {active_previous_month} - ({net_patient_gain})"
         type: number
 
       - name: units_dispensed
