@@ -251,7 +251,7 @@ cubes:
         type: count_distinct
 
       - name: compliance
-        sql: "NULLIF({dispensed_patients_count}, 0) / NULLIF({active_patients_count}, 1)"
+        sql: "{dispensed_patients_count} / NULLIF({active_patients_count}, 0)"
         type: number
 
       - name: churn_rate
@@ -263,11 +263,11 @@ cubes:
         type: number
 
       - name: active_previous_month
-        sql: "CASE WHEN LAG({active_patients_count}) OVER (ORDER BY MONTH) IS NULL THEN NULL ELSE LAG({active_patients_count}) OVER (ORDER BY MONTH) END"
+        sql: "LAG({active_patients_count}) OVER (ORDER BY YEAR,MONTH)"
         type: number
 
       - name: internal_switch
-        sql: "{active_patients_count} - {active_previous_month} - ({net_patient_gain})"
+        sql: "IFNULL({active_patients_count},0) - {active_previous_month} - ({net_patient_gain})"
         type: number
 
       - name: units_dispensed
