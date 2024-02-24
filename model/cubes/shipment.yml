@@ -255,7 +255,7 @@ cubes:
         type: number
 
       - name: churn_rate
-        sql:  "CASE WHEN LAG({active_patients_count}) OVER (ORDER BY MONTH) IS NULL THEN NULL ELSE ({dropoff_patients_count} / LAG({active_patients_count}) OVER (ORDER BY MONTH)) END"
+        sql:  "({dropoff_patients_count} / NULLIF(LAG({active_patients_count}) OVER (ORDER BY YEAR,MONTH),0)"
         type: number
 
       - name: net_patient_gain
