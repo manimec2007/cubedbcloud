@@ -266,9 +266,8 @@ cubes:
         sql: "{new_patients_count} + {restart_patients_count} - {dropoff_patients_count}"
         type: number
 
-
       - name: internal_switch
-        sql: "IFNULL({active_patients_count},0) - {active_previous_month} - ({net_patient_gain})"
+        sql: "{active_patients_count} - IFNULL({active_previous_month},0) - ({net_patient_gain})"
         type: number
 
       - name: units_dispensed
@@ -278,6 +277,10 @@ cubes:
       - name: volume_per_dispense
         sql: "IFNULL({units_dispensed} / NULLIF({dispensed_patients_count}, 0), 0)"
         type: number
+
+      - name: shipped_volume
+        sql: MDM_PAT_ID
+        type: count
 
 
     pre_aggregations:
