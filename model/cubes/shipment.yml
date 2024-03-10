@@ -17,7 +17,8 @@ cubes:
         WHERE MY_DATE BETWEEN '2017-01-01' and '2023-12-31'
         GROUP BY YEAR,
                 MONTH,
-                MONTH_NAME
+                MONTH_NAME,
+                QUARTER
         ),
         Patients
         AS
