@@ -235,6 +235,10 @@ cubes:
         sql: MONTH_NAME
         type: string
 
+      - name: ship_quarter
+        sql: QUARTER
+        type: number
+
       - name: specialty_pharmacy_name
         sql: SPECIALTY_PHARMACY_NAME
         type: string
