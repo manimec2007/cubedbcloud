@@ -276,6 +276,7 @@ cubes:
       - name: active_previous_month
         sql: "CASE WHEN {CUBE}.FLG='PAT' THEN MDM_PAT_ID END"
         type: count_distinct
+        public: false
 
       - name: compliance
         sql: "IFNULL({dispensed_patients} / NULLIF({active_patients}, 0),0)"
