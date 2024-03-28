@@ -43,7 +43,7 @@ cubes:
                 QUANTITY_SHIPPED,
                 DATE_TRUNC(SHIP_DATE,MONTH) AS UN_DATES,
                 DATE_TRUNC(PATIENT_FIRST_SHIP_DATE,MONTH) AS FIRST_SHIP_DATE
-          FROM `pharmsight-analytics.pharmsight_csl.shipment`
+          FROM `pharmsight-analytics.csl_dataset.shipment`
         ),
         Final
         AS
