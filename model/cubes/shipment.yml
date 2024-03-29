@@ -176,7 +176,7 @@ cubes:
         sql: TIMESTAMP(REPORT_DATE)
         type: time
 
-      - name: full_product_name
+      - name: product
         sql: FULL_PRODUCT_NAME
         type: string
 
@@ -369,7 +369,7 @@ cubes:
           - dispensed_patients
           - restart_patients
         dimensions:
-          - shipment.full_product_name
+          - shipment.product
         timeDimension: shipment.ship_date
         granularity: 'month'
         partitionGranularity: 'year'
@@ -592,7 +592,7 @@ cubes:
           - dispensed_patients
           - restart_patients
         dimensions:
-          - shipment.full_product_name
+          - shipment.product
           - shipment.ship_month
           - shipment.ship_year
           - shipment.ship_month_name
