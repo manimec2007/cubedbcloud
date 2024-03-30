@@ -147,22 +147,22 @@ cubes:
                 QUARTER,
                 REPORT_DATE,
                 FLG,
-                UPPER(FULL_PRODUCT_NAME) AS FULL_PRODUCT_NAME,
-                UPPER(TERTIARY_ICD_CODES) AS TERTIARY_ICD_CODES,
-                UPPER(PHYSICIAN_CITY) AS PHYSICIAN_CITY,
-                UPPER(PHYSICIAN_STATE) AS PHYSICIAN_STATE,
-                UPPER(PRIMARY_PAYER_NAME) AS PRIMARY_PAYER_NAME,
-                UPPER(PRIMARY_PAYER_TYPE) AS PRIMARY_PAYER_TYPE,
-                UPPER(PRIMARY_BENEFIT_TYPE) AS PRIMARY_BENEFIT_TYPE,
-                UPPER(PRIMARY_PLAN_NAME) AS PRIMARY_PLAN_NAME,
-                UPPER(PRIMARY_PLAN_TYPE) AS PRIMARY_PLAN_TYPE,
-                UPPER(REGIMEN) AS REGIMEN,
-                UPPER(PAYER_CITY) AS PAYER_CITY,
-                UPPER(PAYER_STATE) AS PAYER_STATE,
+                FULL_PRODUCT_NAME,
+                TERTIARY_ICD_CODES,
+                PHYSICIAN_CITY,
+                PHYSICIAN_STATE,
+                PRIMARY_PAYER_NAME,
+                PRIMARY_PAYER_TYPE,
+                PRIMARY_BENEFIT_TYPE,
+                PRIMARY_PLAN_NAME,
+                PRIMARY_PLAN_TYPE,
+                REGIMEN,
+                PAYER_CITY,
+                PAYER_STATE,
                 MDM_PAT_ID,
-                UPPER(INDICATION_CATEGORY) AS INDICATION_CATEGORY,
+                INDICATION_CATEGORY,
                 PAYER_ZIP,
-                UPPER(SPECIALTY_PHARMACY_NAME) AS SPECIALTY_PHARMACY_NAME,
+                SPECIALTY_PHARMACY_NAME,
                 QUANTITY_SHIPPED
         FROM Final
           
@@ -177,39 +177,39 @@ cubes:
         type: time
 
       - name: product
-        sql: FULL_PRODUCT_NAME
+        sql: UPPER(FULL_PRODUCT_NAME)
         type: string
 
       - name: physician_city
-        sql: PHYSICIAN_CITY
+        sql: UPPER(PHYSICIAN_CITY)
         type: string
 
       - name: physician_state
-        sql: PHYSICIAN_STATE
+        sql: UPPER(PHYSICIAN_STATE)
         type: string
 
       - name: primary_payer_name
-        sql: PRIMARY_PAYER_NAME
+        sql: UPPER(PRIMARY_PAYER_NAME)
         type: string 
 
       - name: primary_plan_name
-        sql: PRIMARY_PLAN_NAME
+        sql: UPPER(PRIMARY_PLAN_NAME)
         type: string
 
       - name: primary_plan_type
-        sql: PRIMARY_PLAN_TYPE
+        sql: UPPER(PRIMARY_PLAN_TYPE)
         type: string
 
       - name: regimen
-        sql: REGIMEN
+        sql: UPPER(REGIMEN)
         type: string
 
       - name: payer_city
-        sql: PAYER_CITY
+        sql: UPPER(PAYER_CITY)
         type: string
 
       - name: payer_state
-        sql: PAYER_STATE
+        sql: UPPER(PAYER_STATE)
         type: string
 
       - name: mdm_pat_id
@@ -217,7 +217,7 @@ cubes:
         type: string
 
       - name: indication_category
-        sql: INDICATION_CATEGORY
+        sql: UPPER(INDICATION_CATEGORY)
         type: string
 
       - name: payer_zip
@@ -241,11 +241,11 @@ cubes:
         type: number
 
       - name: specialty_pharmacy_name
-        sql: SPECIALTY_PHARMACY_NAME
+        sql: UPPER(SPECIALTY_PHARMACY_NAME)
         type: string
 
       - name: primary_payer_type
-        sql: PRIMARY_PAYER_TYPE
+        sql: UPPER(PRIMARY_PAYER_TYPE)
         type: string
 
       - name: quantity_shipped
