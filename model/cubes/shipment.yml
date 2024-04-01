@@ -279,14 +279,14 @@ cubes:
         public: false
 
       - name: compliance
-        sql: "IFNULL({dispensed_patients} / NULLIF({active_patients}, 0),0)"
+        sql: "IFNULL({dispensed_patients} / NULLIF({active_patients}, 0) * 100,0)"
         type: number
-        format: percent
+
 
       - name: churn_rate
-        sql:  "IFNULL({dropoff_patients} / NULLIF({active_previous_month},0),0)"
+        sql: "IFNULL({dropoff_patients} / NULLIF({active_previous_month}, 0) * 100, 0)"
         type: number
-        format: percent
+
 
       - name: net_patient_gain
         sql: "{new_patients} + {restart_patients} - {dropoff_patients}"
