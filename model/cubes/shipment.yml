@@ -317,6 +317,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.physician_city
         timeDimension: shipment.ship_date
@@ -331,6 +338,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.physician_state
         timeDimension: shipment.ship_date
@@ -344,6 +358,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.primary_payer_name
         timeDimension: shipment.ship_date
@@ -357,6 +378,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.primary_plan_name
         timeDimension: shipment.ship_date
@@ -370,6 +398,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.product
         timeDimension: shipment.ship_date
@@ -383,6 +418,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.ship_month
         timeDimension: shipment.ship_date
@@ -396,6 +438,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.specialty_pharmacy_name
         timeDimension: shipment.ship_date
@@ -409,6 +458,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.ship_year
         timeDimension: shipment.ship_date
@@ -422,6 +478,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.ship_month_name
         timeDimension: shipment.ship_date
@@ -435,6 +498,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.primary_payer_type
         timeDimension: shipment.ship_date
@@ -448,6 +518,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.regimen
         timeDimension: shipment.ship_date
@@ -461,6 +538,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.primary_plan_type
         timeDimension: shipment.ship_date
@@ -474,6 +558,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.ship_date
         timeDimension: shipment.ship_date
@@ -487,6 +578,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.payer_city
         timeDimension: shipment.ship_date
@@ -500,6 +598,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.payer_state
         timeDimension: shipment.ship_date
@@ -513,6 +618,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.indication_category
         timeDimension: shipment.ship_date
@@ -526,6 +638,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.payer_zip
         timeDimension: shipment.ship_date
@@ -540,6 +659,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.physician_city
           - shipment.ship_month
@@ -554,6 +680,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.physician_state
           - shipment.ship_month
@@ -567,6 +700,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.primary_payer_name
           - shipment.ship_month
@@ -580,6 +720,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.primary_plan_name
           - shipment.ship_month
@@ -593,6 +740,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.product
           - shipment.ship_month
@@ -606,6 +760,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.ship_month
           - shipment.ship_year
@@ -618,6 +779,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.specialty_pharmacy_name
           - shipment.ship_month
@@ -631,6 +799,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.ship_month
           - shipment.ship_year
@@ -643,6 +818,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.ship_month
           - shipment.ship_year
@@ -655,6 +837,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.primary_payer_type
           - shipment.ship_month
@@ -668,6 +857,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.regimen
           - shipment.ship_month
@@ -681,6 +877,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.primary_plan_type
           - shipment.ship_month
@@ -694,6 +897,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.ship_date
           - shipment.ship_month
@@ -707,6 +917,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.payer_city
           - shipment.ship_month
@@ -720,6 +937,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.payer_state
           - shipment.ship_month
@@ -733,6 +957,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.indication_category
           - shipment.ship_month
@@ -746,6 +977,13 @@ cubes:
           - dropoff_patients
           - dispensed_patients
           - restart_patients
+          - churn_rate
+          - compliance
+          - internal_switch
+          - net_patient_gain
+          - units_dispensed
+          - volume_dispense
+          - shipped_volume
         dimensions:
           - shipment.payer_zip
           - shipment.ship_month
