@@ -279,7 +279,7 @@ cubes:
         public: false
 
       - name: compliance
-        sql: "COALESCE({dispensed_patients} / NULLIF({active_patients}, 0) * 100,0)"
+        sql: "COALESCE({dispensed_patients} / NULLIF({active_patients}, 0), 0) * 100"
         type: number
 
 
