@@ -200,6 +200,10 @@ cubes:
         sql: UPPER(PRIMARY_PLAN_TYPE)
         type: string
 
+      - name: primary_benefit_type
+        sql: PRIMARY_BENEFIT_TYPE
+        type: string
+
       - name: regimen
         sql: UPPER(REGIMEN)
         type: string
