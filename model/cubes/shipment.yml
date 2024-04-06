@@ -14,7 +14,7 @@ cubes:
               DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -1 MONTH) AS RST_DATE,
               DATE_ADD(DATE_TRUNC(MIN(MY_DATE),MONTH),INTERVAL -4 MONTH) AS PRV_DATE
         FROM `pharmsight-analytics.pharmsight_csl.MY_DATE_DIMENSION`
-        WHERE MY_DATE BETWEEN '2017-01-01' and '2023-12-31'
+        WHERE MY_DATE BETWEEN '2017-01-01' and '2024-03-31'
         GROUP BY YEAR,
                 MONTH,
                 MONTH_NAME,
